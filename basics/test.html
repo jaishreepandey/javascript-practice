@@ -18,7 +18,9 @@
 
 	function palindrome(){
 		var x = document.getElementById('input').value;
-		if (checkPalindrome(x)==false)
+		if (x=="")
+			alert("Please enter your string");
+		else if (checkPalindrome(x)==false)
 				alert("Given string is not palindrome");
 		else
 			alert("Given string is palindrome");
