@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration Form</title>
+</head>
+<body>
+<form id="registration">
+	<label for="input">Fill out the registration form below</label><br>
+	<label for="first name">First Name</label><br>
+	<input type="text" id="first name" name="first" /><br>
+	<span id="error"></span><br>
+	<label for="last name">Last Name</label><br>
+	<input type="text" id="last name" name="last name" /><br>
+	<span id="error1"></span><br>
+	<label for="username">Username</label><br>
+	<input type="text" id="username" name="username" /><br>
+	<span id="error2"></span><br>
+	<label for="password">Password</label><br>
+	<input type="password" id="password" name="password" /><br>
+	<span id="error3"></span><br>
+	<label for="i">Select your gender</label><br>
+	<input type="radio" id="male" name="gender" value="male" checked="true" >
+	<label for="male">Male</label><br>
+	<input type="radio" id="female" name="gender" value="female">
+	<label for="female">Female</label><br>
+	<input type="radio" id="other" name="gender" value="other" >
+	<label for="other">Other</label><br><br><br>
+	<input type="checkbox" id="T&C" name="T&C" checked="true">
+	<label for="T&C">Accept Terms and Conditions</label><br><br>
+	<input type="submit" value="Submit" onclick="validation(event)" />
+</form>
+
+<script type="text/javascript">
+
+	function validation(event){
+
+		var x = document.getElementById('first name');
+		var y = document.getElementById('last name');
+		var p = document.getElementById('password');
+		var a = document.getElementById('username');
+		var z = document.getElementsByName('gender');
+		var error = document.getElementById('error');
+		var error1 = document.getElementById('error1');
+		var error2 = document.getElementById('error2');
+		var error3 = document.getElementById('error3');
+		for (var i = 0; i < z.length; i++) {
+			if(z[i].checked==true)
+				var b = z[i].value;
+		}
+        event.preventDefault();
+		if(allLetters(x))
+		{
+			if(allLetter(y))
+			{
+				if(valid(a))
+				{
+					if(validd(p))
+					{
+							console.log(document.getElementById('registration').style.display);
+							document.getElementById('registration').style.display = 'none';
+		                    console.log(document.getElementById('registration').style.display);
+		                    document.write("My name is "+x.value+" "+y.value+". My gender is "+b+". My username is "+a.value);
+
+					}
+				}
+			}
+		}	
+	}
+
+		function allLetters(x){
+			var letters = /^[A-Za-z]+$/;
+			if(x.value.match(letters))
+			{
+				error.textContent ="";
+				return true;
+			}
+			else{
+
+                 error.textContent = "Please enter a valid name";
+                 error.style.color = "red";
+                 x.focus();
+                 return false;
+			
+			}
+		}
+
+		function allLetter(y){
+			var letters = /^[A-Za-z]+$/;
+			if(y.value.match(letters))
+			{
+				error1.textContent ="";
+				return true;
+			}
+			else{
+
+                 error1.textContent = "Please enter a valid name";
+                 error1.style.color = "red";
+                 y.focus();
+                 return false;
+			
+			}
+		}
+
+		function valid(a){
+			var numbers = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)\w{6,18}$/;
+			if (a.value.match(numbers)) {
+	             error2.textContent ="";
+				return true;			
+			} 
+			else {
+			    error2.textContent = "Please enter a valid username";
+                 error2.style.color = "red";
+                 a.focus();
+                 return false;
+			}
+		}
+
+		function validd(p){
+			var numbers = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)\w{6,18}$/;
+			if (p.value.match(numbers)) {
+	             error3.textContent ="";
+				return true;			
+			} 
+			else {
+			    error3.textContent = "Please enter a valid password";
+                 error3.style.color = "red";
+                 p.focus();
+                 return false;
+			}
+		}
+
+
+		
+		
+
+
+		
+
+	
+</script>
+
+</body>
+</html>
